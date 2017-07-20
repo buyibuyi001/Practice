@@ -1,4 +1,5 @@
-# include<stdio.h>  
+/*  计算自然数e的值*/   
+# include<stdio.h>  
 
 void main()    
 {    
@@ -18,25 +19,25 @@ void main()
     return 0;  
 }   
 
-/*****************************************************  
-
-******************************************************/   
-#include<stdio.h>   
+/*****************************************************  
+用链表输入学生成绩，然后将数据排名，然后打印出来   
+******************************************************/   
+#include<stdio.h>   
 #include<stdlib.h>   
 
-struct student   
-    {
-        char stuName[50];
-        int  stuPoint;
-        struct student * next;
-    };
-int main(void)
-{
-    int scanfNum;
-    char  strTemp[50];
-    struct student *stuHead=(struct student *)malloc(sizeof(struct student));
-    struct student *stuCurrent=stuHead;
-    stuCurrent->next=stuHead;
+struct student     
+    {  
+        char stuName[50];  
+        int  stuPoint;  
+        struct student * next;  
+    };   
+int main(void)   
+{   
+    int scanfNum;  
+    char  strTemp[50];   
+    struct student *stuHead=(struct student *)malloc(sizeof(struct student));  
+    struct student *stuCurrent=stuHead;   
+    stuCurrent->next=stuHead;  
 
     puts("Ready to input information,you can end up input with enter quit");
     while(stuCurrent->next!=NULL)
