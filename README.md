@@ -22,9 +22,10 @@ void main()
 /*****************************************************
 
 ******************************************************/
+/*****************************************************
+******************************************************/
 #include<stdio.h>
-#include<math.h>
-#include"Head.h"
+#include<stdlib.h>
 
 struct student
     {
@@ -35,46 +36,54 @@ struct student
 int main(void)
 {
     int scanfNum;
-    char * sc=NULL;
+    char  strTemp[50];
     struct student *stuHead=(struct student *)malloc(sizeof(struct student));
     struct student *stuCurrent=stuHead;
     stuCurrent->next=stuHead;
 
-    puts("Ready to input information,you can end up input with enter \"quit\" \n");
-    while()
+    puts("Ready to input information,you can end up input with enter quit");
+    while(stuCurrent->next!=NULL)
     {
 
-        stuCurrent=(struct student *)malloc(sizeof(struct student));
+        stuCurrent=stuCurrent->next;
+        puts("Please input a student name ");
+        while (gets(stuCurrent->stuName)==NULL||stuCurrent->stuName[0]=='\0')
+            puts("Not input a right student name, please input again");
 
-        puts("Please input a student name \n");
-        while ((fgets(stuCurrent->stuName,50,stdin))==NULL||stuCurrent->stuName[0]=='\0')
-        puts("Not input a right student name, please input again");
-
-        puts("Please input a student point\n");
-        while( (scanfNum=scanf("%d",&stuCurrent->stuPoint))==0 || stuCurrent->stuPoint<0 || stuCurrent->stuPoint>100 )  //no 0 point
+        puts("Please input a student point");
+        while( (scanfNum=scanf("%d",&stuCurrent->stuPoint))==0 || stuCurrent->stuPoint<0 || stuCurrent->stuPoint>100 )
             {
                 printf("Not input a right student point,please input again \n");
-                if (scanfNum==0)
-                    *sc=getchar();
+                gets(strTemp);                     //将错误的输入从stdin清空
             }
 
-        stuCurrent->next=(struct student *)malloc(sizeof(struct student));
+        stuCurrent->next=NULL;
+
+        printf("Press space to continue input  press q to end input \n");
+        strTemp[0]=getchar();
+        while(strTemp[0]!=' ' && strTemp[0]!='q' )
+            {
+                strTemp[0]=getchar();
+            }
+
+            // { printf("good job %d"   ,scanf("%s",strTemp));  break;}
+        if(strTemp[0]==' ')
+            {
+                stuCurrent->next=(struct student *)malloc(sizeof(struct student));
+                gets(strTemp);
+            }
+
     }
-
-
-
-
-    printf("%s %d",stuCurrent->stuName,stuCurrent->stuPoint);
-
 
     stuCurrent=stuHead;
     if (stuCurrent==NULL)
         printf("That's all!\n");
     else
-        printf("See information below:\n");
+        printf("All the students are below:\n");
+
     while(stuCurrent!=NULL)
     {
-        printf("%s %d" ,stuCurrent->stuName,stuCurrent->stuPoint );
+        printf("%-20s %3d \n" ,stuCurrent->stuName,stuCurrent->stuPoint );
         stuCurrent=stuCurrent->next;
     }
 
@@ -84,10 +93,22 @@ int main(void)
         free(stuCurrent);
         stuCurrent=stuCurrent->next;
     }
+    printf("Memory has been released");
 
-    return 1;
+    return 0;
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
