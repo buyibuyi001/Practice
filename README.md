@@ -3,24 +3,24 @@
 
 void main()    
 {    
-    int i,j;   
-    double e=1,single;    
-    printf("Hello world!\n");   
-    for(i=1;i<50;i++)   
-    {   
-        single=1;  
-        for(j=1;j<i+1;j++)  
-        {  
-        	single=single/j;  
-        }  
-        e+=single;  
-    }  
-    printf("%lf\n",e);  
-    return 0;  
+ int i,j;   
+ double e=1,single;    
+ printf("Hello world!\n");   
+ for(i=1;i<50;i++)   
+ {   
+  single=1;  
+  for(j=1;j<i+1;j++)  
+ {  
+  ingle=single/j;  
+ }  
+  e+=single;  
+  }  
+ printf("%lf\n",e);  
+  return 0;  
 }   
 
 /*****************************************************  
-用链表输入学生成绩，然后将数据排名，然后打印出来   
+用链表输入学生成绩，然后将数据排名，然后打印出来      
 ******************************************************/   
 #include<stdio.h>   
 #include<stdlib.h>   
